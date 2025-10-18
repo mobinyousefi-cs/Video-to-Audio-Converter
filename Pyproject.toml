@@ -1,0 +1,51 @@
+[project]
+name = "video-to-audio-converter"
+version = "0.1.0"
+description = "Convert video files to MP3 via GUI (Tkinter) or CLI (MoviePy)."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "Mobin Yousefi", email = "" }
+]
+license = { file = "LICENSE" }
+keywords = ["video", "audio", "converter", "moviepy", "tkinter", "cli"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Environment :: Console",
+  "Environment :: Win32 (MS Windows)",
+  "Environment :: MacOS X",
+  "Environment :: X11 Applications :: GTK",
+]
+
+dependencies = [
+  "moviepy>=1.0.3",
+  "Pillow>=10.0.0",
+]
+
+[project.scripts]
+video2audio = "video_to_audio.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+select = ["E","F","W","I","UP","B","C90"]
+ignore = ["E203"]
+
+[tool.black]
+line-length = 100
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
